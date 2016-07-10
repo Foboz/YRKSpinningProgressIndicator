@@ -60,6 +60,29 @@ static NSTimeInterval timeIntervalFromCVTimeStamp(const CVTimeStamp *timestamp);
     return self;
 }
 
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
+  self = [super initWithCoder:coder];
+  if (self) {
+    _currentPosition = 0;
+    _finColors = @[];
+    
+    _isAnimating = NO;
+    _isFadingOut = NO;
+    
+    // user setter, to generate all fin colors
+    self.color = [NSColor blackColor];
+    _backgroundColor = [NSColor clearColor];
+    _drawsBackground = NO;
+    
+    _displayedWhenStopped = YES;
+    
+    _indeterminate = YES;
+    _currentValue = 0.0;
+    _maxValue = 100.0;
+  }
+  return self;
+}
 
 #pragma mark - NSView overrides
 
